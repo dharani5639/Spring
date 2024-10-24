@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+<!-- here its internally calling setters and getter methods to initialize the values-->
+    <bean id="s1" class="springDemo.Std">
+        <property name="fn" value="fn1"/>
+        <property name="ln" value="ln1"/>
+        <property name="ad" value="add1"/>
+    </bean>
+    
+    
+    <!--Here it is internally calling parameterized constructor to initialize the values  -->
+    <bean id="s2" class="springDemo.Std">
+        <constructor-arg index = "0" value = "fn2"></constructor-arg>
+        <constructor-arg index = "1" value = "ln2"></constructor-arg>
+        <constructor-arg index = "2" value = "add2"></constructor-arg>
+    </bean>
+    
+    
+    <!-- combination of above both tags to initialize the values
+     here taking parameterized  constructor having only 2 parameters-->
+    <bean id="s3" class="springDemo.Std">
+        <constructor-arg index = "0" value = "fn3"></constructor-arg>
+        <property name="ln" value = "ln3"></property>
+        <constructor-arg index = "1" value = "add3"></constructor-arg>
+    </bean>
+    
+    
+    <!-- Here copying the other object values and assigning that values into
+    newly create object by using property tag it means by calling setter-->
+    <bean id="s4" class="springDemo.Std"> 
+        <property name="copyObject" ref = "s1"></property>
+    </bean>
+    
+    
+    <!-- Here copying the other object values and assigning that values into
+    newly create object by using Construstor-arg tag it means by calling constructor -->
+    <bean id="s5" class="springDemo.Std"> 
+    	<constructor-arg index = "0" ref = "s1"></constructor-arg>
+    </bean>
+    
+    <bean id = "s6" class = "springDemo.Std"></bean>
+    
+    
+    
+    
+
+</beans>
